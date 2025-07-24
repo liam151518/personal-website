@@ -135,68 +135,7 @@ export function PremiumContact() {
   };
 
   return (
-    <section className="relative py-32 bg-background text-foreground overflow-hidden section-padding">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0">
-        {/* Championship Background Pattern */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 blur-3xl animate-championship" />
-        <div className="absolute top-3/4 right-1/4 w-24 h-24 rounded-full bg-gradient-to-r from-primary/15 to-secondary/15 blur-2xl floating" />
-        <div className="absolute top-1/2 left-1/2 w-40 h-40 rounded-full bg-gradient-to-r from-accent/5 to-primary/5 blur-3xl" style={{ animationDelay: '1s' }} />
-        
-        {/* Moving orbs */}
-        <motion.div
-          className="absolute top-1/3 left-1/5 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, 200, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, -150, 0],
-            y: [0, -80, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        {/* Communication lines */}
-        <div className="absolute inset-0">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-px h-40 bg-gradient-to-b from-transparent via-primary/20 to-transparent"
-              style={{
-                left: `${20 + (i * 15)}%`,
-                top: `${25 + (i * 8)}%`,
-                transform: `rotate(${30 + i * 20}deg)`
-              }}
-              animate={{
-                opacity: [0.2, 0.8, 0.2],
-                scaleY: [1, 1.5, 1],
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.5,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
+    <section className="relative py-32 text-foreground overflow-hidden section-padding">
       <motion.div 
         ref={containerRef}
         className="relative z-10 container-elite"

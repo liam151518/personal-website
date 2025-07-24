@@ -17,14 +17,7 @@ export const ImageTrailHero = () => {
   ].map(url => `${url}?auto=format&fit=crop&w=300&q=80`)
 
   return (
-    <div className="flex w-full h-screen justify-center items-center bg-background relative overflow-hidden section-padding">
-      {/* Championship Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 blur-3xl animate-championship" />
-        <div className="absolute top-3/4 right-1/4 w-24 h-24 rounded-full bg-gradient-to-r from-primary/15 to-secondary/15 blur-2xl floating" />
-        <div className="absolute top-1/2 left-1/2 w-40 h-40 rounded-full bg-gradient-to-r from-accent/5 to-primary/5 blur-3xl" style={{ animationDelay: '1s' }} />
-      </div>
-
+    <div className="w-full h-screen relative overflow-hidden flex items-center justify-center px-2 md:px-10 py-4">
       <div className="absolute inset-0 z-0" ref={ref}>
         <ImageTrail containerRef={ref}>
           {images.map((url, index) => (
@@ -41,7 +34,7 @@ export const ImageTrailHero = () => {
           ))}
         </ImageTrail>
       </div>
-      
+
       <div className="text-center relative z-10">
         <h1 className="text-responsive-xl font-black gradient-text leading-tight tracking-tight z-10 select-none">
           Liam Xander Santos

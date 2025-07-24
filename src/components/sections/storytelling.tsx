@@ -99,13 +99,7 @@ export function StorytellingSection() {
   }
 
   return (
-    <section id="story" className="section-padding bg-gradient-to-br from-background via-background/95 to-background relative overflow-hidden">
-      {/* Championship Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-primary/5 to-accent/5 blur-3xl floating" />
-        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full bg-gradient-to-r from-accent/5 to-primary/5 blur-2xl" style={{ animationDelay: '2s' }} />
-      </div>
-
+    <section id="story" className="section-padding relative overflow-hidden py-32">
       <div className="container-elite relative">
         {/* Section Header */}
         <motion.div

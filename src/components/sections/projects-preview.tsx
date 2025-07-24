@@ -108,14 +108,7 @@ export function ProjectsPreview() {
   const currentProjects = getCurrentProjects()
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-br from-background to-background/90 relative overflow-hidden">
-      {/* Elite Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-gradient-to-r from-primary/3 to-accent/3 blur-3xl floating" />
-        <div className="absolute bottom-1/3 right-1/4 w-56 h-56 rounded-full bg-gradient-to-r from-accent/4 to-primary/4 blur-2xl" style={{ animationDelay: '3s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-primary/2 to-accent/2 blur-3xl" style={{ animationDelay: '1.5s' }} />
-      </div>
-
+    <section id="projects" className="section-padding relative overflow-hidden py-32">
       <div className="container-elite relative">
         {/* Section Header */}
         <motion.div
