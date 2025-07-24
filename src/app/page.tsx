@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { Navigation } from '@/components/navigation'
-import { Hero } from '@/components/sections/hero'
+import { ImageTrailHero } from '@/components/sections/image-trail-hero'
 import { StorytellingSection } from '@/components/sections/storytelling'
 import { ProjectsPreview } from '@/components/sections/projects-preview'
 import { InspirationPreview } from '@/components/sections/inspiration-preview'
@@ -17,10 +17,10 @@ export default function HomePage() {
         <Navigation />
       </Suspense>
 
-      {/* Hero Section */}
+      {/* Hero Section with Image Trail */}
       <section id="hero" className="relative">
         <Suspense fallback={<div className="h-screen" />}>
-          <Hero />
+          <ImageTrailHero />
         </Suspense>
       </section>
 
@@ -58,7 +58,8 @@ export default function HomePage() {
       </Suspense>
 
       {/* Interactive Features */}
-      <GestureControls />    </div>
+      <GestureControls />
+    </div>
   )
 }
 
