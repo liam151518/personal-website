@@ -238,6 +238,77 @@
     letter-spacing: -0.02em;
   }
 
+  .gradient-text-enhanced {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF8C00 50%, #FF6B35 75%, #FFD23F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    position: relative;
+    text-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.3),
+      0 0 60px rgba(255, 165, 0, 0.2);
+    -webkit-text-stroke: 1px rgba(255, 215, 0, 0.3);
+    text-stroke: 1px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .gradient-text-enhanced:hover {
+    transform: scale(1.02);
+    text-shadow: 
+      0 0 50px rgba(255, 215, 0, 0.5),
+      0 0 100px rgba(255, 165, 0, 0.3),
+      0 0 150px rgba(255, 140, 0, 0.2);
+  }
+
+  .gradient-text-enhanced::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+
+  .gradient-text-enhanced::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -2;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(4px);
+    opacity: 0.6;
+  }
+
+  .name-glow-animation {
+    animation: name-glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes name-glow {
+    0% {
+      text-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.3),
+        0 0 60px rgba(255, 165, 0, 0.2);
+    }
+    100% {
+      text-shadow: 
+        0 0 40px rgba(255, 215, 0, 0.5),
+        0 0 80px rgba(255, 165, 0, 0.3),
+        0 0 120px rgba(255, 140, 0, 0.2);
+    }
+  }
+
   .text-elite {
     background: var(--gradient-elite);
     -webkit-background-clip: text;
@@ -374,6 +445,10 @@
   /* Responsive Typography */
   .text-responsive-xl {
     font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  .text-responsive-xl-enhanced {
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
   }
 
   .text-responsive-lg {

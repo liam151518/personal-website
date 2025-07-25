@@ -66,7 +66,10 @@ export function Hero() {
               </p>
               <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/50" />
             </div>
-            <h1 className="text-responsive-xl font-black gradient-text leading-tight tracking-tight">
+            <h1 
+              className="text-responsive-xl-enhanced font-black gradient-text-enhanced leading-tight tracking-tight name-glow-animation"
+              data-text="Liam Xander Santos"
+            >
               Liam Xander Santos
             </h1>
           </motion.div>
