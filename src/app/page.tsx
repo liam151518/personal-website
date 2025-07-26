@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Navigation } from '@/components/navigation'
 import { ImageTrailHero } from '@/components/sections/image-trail-hero'
 import { StorytellingSection } from '@/components/sections/storytelling'
-import { ProjectsPreview } from '@/components/sections/projects-preview'
+import { ProjectCarousel } from '@/components/sections/project-carousel'
 import { InspirationPreview } from '@/components/sections/inspiration-preview'
 import { ContactSection } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
@@ -33,10 +33,10 @@ export default function HomePage() {
           </Suspense>
         </section>
 
-        {/* Projects Preview */}
+        {/* Projects Carousel */}
         <section id="projects" className="relative">
           <Suspense fallback={<div className="h-screen" />}>
-            <ProjectsPreview />
+            <ProjectCarousel />
           </Suspense>
         </section>
 
