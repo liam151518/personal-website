@@ -1,55 +1,36 @@
 'use client'
 
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Lightbulb, Award, Code, ChevronLeft, ChevronRight, Calendar, MapPin } from 'lucide-react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Target, Flame } from 'lucide-react'
 import { RugbyTimeline } from './rugby-timeline'
-
-const achievements = [
-  { id: 1, title: 'International Winner', description: 'HSBC Sevens Challenger Series Champion', icon: '🏆' },
-  { id: 2, title: 'Lions U19 Squad', description: 'Elite provincial level rugby', icon: '🦁' },
-  { id: 3, title: 'Portugal Sevens', description: 'International representative player', icon: '🇵🇹' },
-  { id: 4, title: 'Multiple Captain', description: 'Led teams from U13 to university level', icon: '👑' }
-]
+import { HighlightsSection } from './highlights'
 
 const values = [
   {
     id: 1,
-    title: 'Obsession Beats Talent',
-    description: 'Relentless dedication and continuous improvement drive exceptional performance',
-    gradient: 'from-orange-400 to-red-500'
+    title: 'Christianity',
+    description: 'I believe that God has called me to pursue success in life to provide the best for my family and myself and I recognize that every blessing comes from Him. In that success lies my true duty, to share His Word and demonstrate that, as an ordinary person, anyone who trusts in God can achieve their goals.',
+    gradient: 'from-orange-400 to-red-500',
+    symbol: '✝'
   },
   {
     id: 2,
-    title: 'Leadership Through Action',
-    description: 'Leading by example across multiple teams and championship victories',
-    gradient: 'from-blue-400 to-purple-500'
+    title: 'Actions Speak Louder Than Words',
+    description: '"True character reveals itself not in idle promises, but in the weight of what we accomplish. We are measured by the marks we leave on the world by the concrete steps we take and the burdens we bear. Speak boldly, but build even more boldly. Let your actions stand as living proof of your values, for it is through what you do that you are truly remembered."',
+    gradient: 'from-blue-400 to-purple-500',
+    icon: Target
   },
   {
     id: 3,
-    title: 'Athletic Excellence',
-    description: 'Pursuit of elite performance from provincial to international level',
-    gradient: 'from-green-400 to-blue-500'
-  },
-  {
-    id: 4,
-    title: 'Championship Mentality',
-    description: 'Winning mindset developed through consistent success and team leadership',
-    gradient: 'from-purple-400 to-pink-500'
+    title: 'Obsession Beats Talent',
+    description: '"Talent may give you a head start, but it\'s relentless drive that propels you to the summit. To claim a place in the top one percent, you must embrace the grind with unwavering passion and tireless effort what some call obsession is simply the price of greatness. It\'s not enough to be gifted. You must outwork, outlast, and outthink everyone else."',
+    gradient: 'from-green-400 to-blue-500',
+    icon: Flame
   }
 ]
 
 export function StorytellingSection() {
-  const [currentAchievement, setCurrentAchievement] = useState(0)
-
-  const nextAchievement = () => {
-    setCurrentAchievement((prev) => (prev + 1) % achievements.length)
-  }
-
-  const prevAchievement = () => {
-    setCurrentAchievement((prev) => (prev - 1 + achievements.length) % achievements.length)
-  }
-
   return (
     <section id="story" className="section-padding relative overflow-hidden py-32">
       <div className="container-elite relative">
@@ -58,70 +39,10 @@ export function StorytellingSection() {
           <RugbyTimeline />
         </div>
 
-        {/* Achievement Showcase */}
-        <motion.div
-          className="mb-24"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h3 className="text-responsive-md text-center mb-12 text-elite">Elite Achievements</h3>
-          
-          <div className="relative max-w-2xl mx-auto">
-            <div className="glass-strong p-12 rounded-2xl text-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentAchievement}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-6"
-                >
-                  <div className="text-6xl mb-6">
-                    {achievements[currentAchievement].icon}
-                  </div>
-                  <h4 className="text-2xl font-bold gradient-text">
-                    {achievements[currentAchievement].title}
-                  </h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {achievements[currentAchievement].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex justify-center gap-4 mt-8">
-              <button
-                onClick={prevAchievement}
-                className="glass p-3 rounded-full magnetic hover:border-primary/50 transition-colors focus-elite"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="flex gap-2 items-center">
-                {achievements.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentAchievement(index)}
-                    className={`w-3 h-3 rounded-full transition-all focus-elite ${
-                      index === currentAchievement 
-                        ? 'bg-primary scale-125' 
-                        : 'bg-muted-foreground/30 hover:bg-primary/50'
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={nextAchievement}
-                className="glass p-3 rounded-full magnetic hover:border-primary/50 transition-colors focus-elite"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
-        </motion.div>
+        {/* Highlights Section */}
+        <div className="mb-24">
+          <HighlightsSection />
+        </div>
 
         {/* Values Manifesto */}
         <motion.div
@@ -130,27 +51,47 @@ export function StorytellingSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-responsive-md text-center mb-12 text-elite">Championship Values</h3>
+          <h3 className="text-responsive-md text-center mb-12 text-elite">My Values</h3>
           
           <div className="grid-elite">
             {values.map((value, index) => (
               <motion.div
                 key={value.id}
-                className="card-elite p-8 text-center hover-lift group"
-                initial={{ opacity: 0, y: 30 }}
+                className="card-elite p-6 text-center group relative overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: index * 0.1, 
+                  ease: "easeOut"
+                }}
               >
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${value.gradient} flex items-center justify-center shadow-elite`}>
-                  <div className="w-8 h-8 bg-white/20 rounded-lg backdrop-blur-sm" />
+                {/* Enhanced background with subtle gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5 rounded-2xl" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className={`w-18 h-18 mx-auto mb-6 rounded-3xl bg-gradient-to-r ${value.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 ease-out`}>
+                    {value.symbol ? (
+                      <span className="text-3xl text-white font-bold">{value.symbol}</span>
+                    ) : value.icon ? (
+                      <value.icon className="w-9 h-9 text-white" />
+                    ) : (
+                      <div className="w-9 h-9 bg-white/20 rounded-xl backdrop-blur-sm" />
+                    )}
+                  </div>
+                  <h4 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-all duration-300 ease-out">
+                    {value.title}
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed text-base group-hover:text-foreground/90 transition-all duration-300 ease-out">
+                    {value.description}
+                  </p>
                 </div>
-                <h4 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-                  {value.title}
-                </h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {value.description}
-                </p>
+
+                {/* Subtle hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
               </motion.div>
             ))}
           </div>
