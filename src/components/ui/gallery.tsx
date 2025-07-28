@@ -83,59 +83,99 @@ export const PhotoGallery = ({
     {
       id: 1,
       order: 0,
-      x: "-320px",
+      x: "-400px",
       y: "15px",
-      zIndex: 50, // Highest z-index (on top)
+      zIndex: 80,
       direction: "left" as Direction,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=800&fit=crop&crop=center",
-      alt: "HSBC Sevens Championship Victory"
+      src: "/photos/fnb-young-guns-champions-2025.jpg",
+      alt: "FNB Young Guns Champions 2025 - Victory Celebration"
     },
     {
       id: 2,
       order: 1,
-      x: "-160px",
+      x: "-280px",
       y: "32px",
-      zIndex: 40,
+      zIndex: 70,
       direction: "left" as Direction,
-      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=800&fit=crop&crop=center",
-      alt: "Lions U19 Squad Training"
+      src: "/photos/portugal-sevens-victory.jpg",
+      alt: "Portugal Sevens Championship Victory"
     },
     {
       id: 3,
       order: 2,
-      x: "0px",
+      x: "-140px",
       y: "8px",
-      zIndex: 30,
+      zIndex: 60,
       direction: "right" as Direction,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=800&fit=crop&crop=center",
-      alt: "Portugal Sevens International Match"
+      src: "/photos/grey-college-team.jpg",
+      alt: "Grey College Rugby Team - School Days"
     },
     {
       id: 4,
       order: 3,
-      x: "160px",
+      x: "0px",
       y: "22px",
-      zIndex: 20,
+      zIndex: 50,
       direction: "right" as Direction,
-      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=800&fit=crop&crop=center",
-      alt: "Wits University Championship"
+      src: "/photos/lions-training-huddle.jpg",
+      alt: "Lions Training Session - Team Unity"
     },
     {
       id: 5,
       order: 4,
-      x: "320px",
+      x: "140px",
       y: "44px",
-      zIndex: 10, // Lowest z-index (at bottom)
+      zIndex: 40,
       direction: "left" as Direction,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=800&fit=crop&crop=center",
-      alt: "U13 Craven Week Captain"
+      src: "/photos/formal-celebration.jpg",
+      alt: "Team Celebration - Brotherhood Moment"
+    },
+    {
+      id: 6,
+      order: 5,
+      x: "280px",
+      y: "18px",
+      zIndex: 30,
+      direction: "right" as Direction,
+      src: "/photos/adventure-lifestyle.jpg",
+      alt: "Adventure Lifestyle - Off-Field Moments"
+    },
+    {
+      id: 7,
+      order: 6,
+      x: "400px",
+      y: "36px",
+      zIndex: 20,
+      direction: "left" as Direction,
+      src: "/photos/team-celebration-indoor.jpg",
+      alt: "Indoor Team Celebration - Victory Atmosphere"
+    },
+    {
+      id: 8,
+      order: 7,
+      x: "-320px",
+      y: "-25px",
+      zIndex: 15,
+      direction: "right" as Direction,
+      src: "/photos/rugby-scrum-action.jpg",
+      alt: "Rugby Scrum Action - Game Intensity"
+    },
+    {
+      id: 9,
+      order: 8,
+      x: "320px",
+      y: "-15px",
+      zIndex: 10,
+      direction: "left" as Direction,
+      src: "/photos/rugby-match-action.jpg",
+      alt: "Match Action - Competitive Spirit"
     },
   ];
 
   return (
     <div ref={ref} className="relative">
        <div className="absolute inset-0 max-md:hidden top-[200px] -z-10 h-[300px] w-full bg-transparent bg-[linear-gradient(to_right,#57534e_1px,transparent_1px),linear-gradient(to_bottom,#57534e_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-20 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] dark:bg-[linear-gradient(to_right,#a8a29e_1px,transparent_1px),linear-gradient(to_bottom,#a8a29e_1px,transparent_1px)]"></div>
-      <div className="relative mb-8 h-[350px] w-full items-center justify-center lg:flex">
+      <div className="relative mb-8 h-[450px] w-full items-center justify-center lg:flex">
         <motion.div
           className="relative mx-auto flex w-full max-w-7xl justify-center"
           initial={{ opacity: 0 }}
@@ -148,7 +188,7 @@ export const PhotoGallery = ({
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
           >
-            <div className="relative h-[220px] w-[220px]">
+            <div className="relative h-[300px] w-[300px]">
               {/* Render photos in reverse order so that higher z-index photos are rendered later in the DOM */}
               {[...photos].reverse().map((photo) => (
                 <motion.div
@@ -163,8 +203,8 @@ export const PhotoGallery = ({
                   }}
                 >
                   <Photo
-                    width={220}
-                    height={220}
+                    width={200}
+                    height={200}
                     src={photo.src}
                     alt={photo.alt}
                     direction={photo.direction}
