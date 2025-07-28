@@ -1,8 +1,8 @@
 "use client";
 
-import { Ref, forwardRef, useState, useEffect } from "react";
+import { Ref, forwardRef, useState, useEffect, useRef } from "react";
 import Image, { ImageProps } from "next/image";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useInView } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -13,26 +13,34 @@ export const PhotoGallery = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const ref = useRef(null);
+  const isInViewport = useInView(ref, { once: false, margin: "-100px" });
 
   useEffect(() => {
-    // First make the container visible with a fade-in
-    const visibilityTimer = setTimeout(() => {
-      setIsVisible(true);
-    }, animationDelay * 1000);
+    if (isInViewport) {
+      // Reset states when coming into view
+      setIsVisible(false);
+      setIsLoaded(false);
+      
+      // First make the container visible with a fade-in
+      const visibilityTimer = setTimeout(() => {
+        setIsVisible(true);
+      }, animationDelay * 1000);
 
-    // Then start the photo animations after a short delay
-    const animationTimer = setTimeout(
-      () => {
-        setIsLoaded(true);
-      },
-      (animationDelay + 0.4) * 1000
-    ); // Add 0.4s for the opacity transition
+      // Then start the photo animations after a short delay
+      const animationTimer = setTimeout(
+        () => {
+          setIsLoaded(true);
+        },
+        (animationDelay + 0.4) * 1000
+      ); // Add 0.4s for the opacity transition
 
-    return () => {
-      clearTimeout(visibilityTimer);
-      clearTimeout(animationTimer);
-    };
-  }, [animationDelay]);
+      return () => {
+        clearTimeout(visibilityTimer);
+        clearTimeout(animationTimer);
+      };
+    }
+  }, [animationDelay, isInViewport]);
 
   // Animation variants for the container
   const containerVariants = {
@@ -125,7 +133,7 @@ export const PhotoGallery = ({
   ];
 
   return (
-    <div className="relative">
+    <div ref={ref} className="relative">
        <div className="absolute inset-0 max-md:hidden top-[200px] -z-10 h-[300px] w-full bg-transparent bg-[linear-gradient(to_right,#57534e_1px,transparent_1px),linear-gradient(to_bottom,#57534e_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-20 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] dark:bg-[linear-gradient(to_right,#a8a29e_1px,transparent_1px),linear-gradient(to_bottom,#a8a29e_1px,transparent_1px)]"></div>
       <div className="relative mb-8 h-[350px] w-full items-center justify-center lg:flex">
         <motion.div

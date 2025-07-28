@@ -13,7 +13,7 @@ export function HighlightsSection() {
           className="text-center mb-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <div className="status-elite mb-6">Life's Moments</div>
@@ -32,7 +32,7 @@ export function HighlightsSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <PhotoGallery animationDelay={0.3} />
