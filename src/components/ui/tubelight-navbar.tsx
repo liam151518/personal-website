@@ -36,7 +36,31 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // Scroll-based navigation tracking and visibility control
+  // Set initial active tab based on current page
+  useEffect(() => {
+    if (pathname === '/rugby-cv') {
+      setActiveTab('Rugby CV')
+    } else if (pathname === '/') {
+      // On homepage, set initial active tab based on scroll position
+      const sectionsToTrack = items.filter(item => item.url.startsWith('/#'))
+      if (sectionsToTrack.length > 0) {
+        const scrollY = window.scrollY + 100
+        for (let i = sectionsToTrack.length - 1; i >= 0; i--) {
+          const section = sectionsToTrack[i]
+          const sectionId = section.url.substring(2) // Remove '#'
+          const element = document.getElementById(sectionId)
+          if (element && element.offsetTop <= scrollY) {
+            setActiveTab(section.name)
+            break
+          }
+        }
+      } else {
+        setActiveTab('Home')
+      }
+    }
+  }, [pathname, items])
+
+  // Scroll-based navigation tracking and visibility control (only on homepage)
   useEffect(() => {
     if (pathname !== '/') return // Only track scroll on homepage
 

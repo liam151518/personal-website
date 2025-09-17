@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { AnimationProvider } from '@/components/animation-provider'
@@ -7,10 +7,11 @@ import { CustomCursor } from '@/components/ui/custom-cursor'
 import { ParticleBackground } from '@/components/animations/particle-background'
 import { LoadingSequence } from '@/components/animations/loading-sequence'
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -90,7 +91,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html 
       lang="en" 
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${outfit.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased overflow-x-hidden">

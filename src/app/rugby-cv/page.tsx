@@ -1,14 +1,12 @@
 import { Suspense } from 'react'
 import { Navigation } from '@/components/navigation'
 import { RugbyHero } from '@/components/sections/rugby/rugby-hero'
-import { RugbyTimeline } from '@/components/sections/rugby/rugby-timeline'
 import { RugbyAchievements } from '@/components/sections/rugby/rugby-achievements'
+import RugbyVideoDemo from '@/components/sections/rugby/rugby-video-experience'
 import { RugbyTestimonials } from '@/components/sections/rugby/rugby-testimonials'
-import { RugbyStats } from '@/components/sections/rugby/rugby-stats'
 import { ContactSection } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
 import { GestureControls } from '@/components/interactive/gesture-controls'
-
 
 // Export metadata for the Rugby CV page
 export const metadata = {
@@ -24,42 +22,35 @@ export default function RugbyCVPage() {
         <Navigation />
       </Suspense>
 
-      {/* Rugby Hero Section */}
+      {/* Rugby Hero Section - Introduction & Overview */}
       <section id="rugby-hero" className="relative">
         <Suspense fallback={<div className="h-screen" />}>
           <RugbyHero />
         </Suspense>
       </section>
 
-      {/* Rugby Timeline */}
-      <section id="rugby-timeline" className="relative">
-        <Suspense fallback={<div className="h-screen" />}>
-          <RugbyTimeline />
-        </Suspense>
-      </section>
-
-      {/* Rugby Achievements */}
+      {/* Rugby Achievements - Detailed Journey & Accomplishments */}
       <section id="rugby-achievements" className="relative">
         <Suspense fallback={<div className="h-screen" />}>
           <RugbyAchievements />
         </Suspense>
       </section>
 
-      {/* Rugby Statistics */}
-      <section id="rugby-stats" className="relative">
+      {/* Interactive Video Experience - Championship Journey */}
+      <section id="rugby-video-experience" className="relative">
         <Suspense fallback={<div className="h-screen" />}>
-          <RugbyStats />
+          <RugbyVideoDemo />
         </Suspense>
       </section>
 
-      {/* Rugby Testimonials */}
+      {/* Rugby Testimonials - Coach References */}
       <section id="rugby-testimonials" className="relative">
         <Suspense fallback={<div className="h-screen" />}>
           <RugbyTestimonials />
         </Suspense>
       </section>
 
-      {/* Contact */}
+      {/* Contact - Professional Contact Information */}
       <section id="contact" className="relative">
         <Suspense fallback={<div className="h-96" />}>
           <ContactSection />
@@ -72,6 +63,7 @@ export default function RugbyCVPage() {
       </Suspense>
 
       {/* Interactive Features */}
-      <GestureControls />    </div>
+      <GestureControls />
+    </div>
   )
 } 

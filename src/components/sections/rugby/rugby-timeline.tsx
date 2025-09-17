@@ -2,20 +2,21 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Star, Lightbulb, Award, Code, ChevronLeft, ChevronRight, Calendar, MapPin } from 'lucide-react'
+import { Trophy, Star, Lightbulb, Award, Code, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Flag, Crown, Target } from 'lucide-react'
 
 const timelineEvents = [
   {
     id: 1,
     year: '2019',
     title: 'Early Leadership Foundation',
-    description: 'Captain of Limpopo Blue Bulls U13 Craven Week',
+    description: 'Captain of Limpopo Blue Bulls U13 Craven Week & Limpopo 7s',
     icon: Trophy,
     color: 'from-blue-500 to-cyan-500',
     location: 'Limpopo, South Africa',
     details: [
-      'Led Limpopo Blue Bulls U13 at Craven Week',
-      'Captain of Limpopo 7s tournament',
+      'Limpopo Blue Bulls U13 Craven Week (Captain)',
+      'Limpopo 7s (Captain)',
+      'First provincial captaincy at U13 level',
       'Early signs of natural leadership ability',
       'First taste of elite rugby competition'
     ],
@@ -23,65 +24,103 @@ const timelineEvents = [
   },
   {
     id: 2,
-    year: '2021-2022',
+    year: '2020–2021',
     title: 'Grey College Excellence Era',
-    description: 'Captain of Grey College U16A and Player of the Year',
+    description: 'Grey College U14A & U15A with 2021 Captaincy',
     icon: Star,
     color: 'from-purple-500 to-pink-500',
     location: 'Bloemfontein, South Africa',
     details: [
-      'Grey College U16A Captain & Player of the Year',
-      'Free State Grant Khomo Captain',
-      'World Schools Tournament (Thailand)',
-      'Established as elite school rugby player'
+      'Grey College U14A & U15A',
+      'U15A Captain (2021)',
+      'U15 Player of the Year (2021)',
+      'Established as elite school rugby player',
+      'Leadership development at prestigious rugby school'
     ],
     achievement: 'Player of the Year recognition'
   },
   {
     id: 3,
-    year: '2023',
-    title: 'Provincial Recognition Breakthrough',
-    description: 'Captain of Free State U17 IPT 7s and Grey College First Team',
+    year: '2022',
+    title: 'School Rugby Excellence',
+    description: 'Grey College U16A Captain & Player of the Year, Free State Representative',
     icon: Lightbulb,
     color: 'from-green-500 to-emerald-500',
-    location: 'Free State, South Africa',
+    location: 'Bloemfontein, South Africa',
     details: [
-      'Captain: Free State U17 IPT 7s',
-      'Grey College 1st & 2nd Teams',
-      'Rhino Week Captain',
-      'Stepped up to provincial representation'
+      'Grey College U16A (Captain & Player of the Year)',
+      'Free State Grant Khomo (Captain)',
+      'Free State U17 IPT 7s',
+      'World Schools Tournament (Thailand)',
+      'Dual captaincy at school and provincial level'
+    ],
+    achievement: 'Dual captaincy & Player of the Year'
+  },
+  {
+    id: 4,
+    year: '2023',
+    title: 'Provincial Recognition Breakthrough',
+    description: 'Grey College First Team & Free State U17 IPT 7s Captain',
+    icon: Award,
+    color: 'from-orange-500 to-red-500',
+    location: 'Bloemfontein, South Africa',
+    details: [
+      'Grey College 2nd & 1st Teams',
+      'Free State U17 IPT 7s (Captain)',
+      'Rhino Week (Captain)',
+      'Stepped up to provincial representation',
+      'Consistent leadership at multiple levels'
     ],
     achievement: 'Provincial captaincy achieved'
   },
   {
-    id: 4,
+    id: 5,
     year: '2024',
     title: 'Elite Professional Transition',
-    description: 'Selected for Lions Rugby U19/U21 Squad',
-    icon: Award,
-    color: 'from-orange-500 to-red-500',
+    description: 'Grey College First Team & Lions Rugby U19/U21 Squad Selection',
+    icon: Code,
+    color: 'from-indigo-500 to-purple-500',
     location: 'Johannesburg, South Africa',
     details: [
-      'Lions Rugby U19/U21 Squad member',
-      'Grey College First Team leadership',
+      'Grey College First Team',
+      'Lions Rugby U19/U21 Squad Member',
       'Stepped up to elite provincial level',
-      'Professional rugby pathway opened'
+      'Professional rugby pathway opened',
+      'Elite squad selection achieved'
     ],
     achievement: 'Elite squad selection'
   },
   {
-    id: 5,
+    id: 6,
+    year: '2024–2025',
+    title: 'Elite Squad Development',
+    description: 'Continued Lions Rugby U19/U21 Squad membership',
+    icon: Users,
+    color: 'from-yellow-500 to-orange-500',
+    location: 'Johannesburg, South Africa',
+    details: [
+      'Lions Rugby U19/U21 Squad Member',
+      'Elite provincial development',
+      'Professional rugby preparation',
+      'International pathway development',
+      'Consistent elite level performance'
+    ],
+    achievement: 'Elite squad consistency'
+  },
+  {
+    id: 7,
     year: '2025',
     title: 'International Championship Success',
-    description: 'HSBC Sevens Challenger Series Winner with Portugal',
-    icon: Code,
-    color: 'from-indigo-500 to-purple-500',
-    location: 'Cape Town & Portugal',
+    description: 'Wits Young Guns Captain & Portugal Senior Sevens HSBC Winner',
+    icon: Crown,
+    color: 'from-red-500 to-pink-500',
+    location: 'Johannesburg & Cape Town, South Africa',
     details: [
-      'HSBC Sevens Challenger Series Winner (Cape Town)',
-      'Wits Young Guns Captain & Champions',
-      'Portugal Senior Sevens Team member',
-      'International championship achieved'
+      'Wits Young Guns – Varsity Cup / Young Guns Cup Winners (Captain)',
+      'Portugal Senior Sevens – HSBC Sevens Challenger Series Winner',
+      'International championship achieved',
+      'University captaincy success',
+      'Dual championship victories'
     ],
     achievement: 'International champion status'
   }
@@ -97,17 +136,17 @@ const achievements = [
   },
   {
     id: 2,
-    title: 'Provincial Elite Squad',
-    description: 'Selected for Lions U19/U21 squads, competing at the highest level of South African provincial rugby with consistent development and leadership demonstration.',
-    icon: '🦁',
-    stats: { seasons: 2, level: 'Provincial Elite', progress: '85%' }
-  },
-  {
-    id: 3,
     title: 'University Champions',
     description: 'Captain of Wits University Young Guns championship team, leading the squad to victory while maintaining academic excellence at university level.',
     icon: '🎓',
     stats: { titles: 1, captaincy: 'Yes', year: '2025' }
+  },
+  {
+    id: 3,
+    title: 'Provincial Elite Squad',
+    description: 'Selected for Lions U19/U21 squads, competing at the highest level of South African provincial rugby with consistent development and leadership demonstration.',
+    icon: '🦁',
+    stats: { seasons: 2, level: 'Provincial Elite', progress: '85%' }
   },
   {
     id: 4,
@@ -115,6 +154,59 @@ const achievements = [
     description: 'From U13 Craven Week to international level, demonstrated natural leadership with 8+ captaincies across 6 years of elite rugby competition.',
     icon: '⭐',
     stats: { captaincies: '8+', years: 6, progression: 'U13 to International' }
+  }
+]
+
+const representativeHonours = [
+  {
+    year: '2019',
+    honours: [
+      { team: 'Limpopo Blue Bulls U13 Craven Week', role: 'Captain' },
+      { team: 'Limpopo 7s', role: 'Captain' }
+    ]
+  },
+  {
+    year: '2020–2021',
+    honours: [
+      { team: 'Grey College U14A & U15A', role: 'Captain (2021)' },
+      { team: 'U15 Player of the Year', role: 'Individual Award' }
+    ]
+  },
+  {
+    year: '2022',
+    honours: [
+      { team: 'Grey College U16A', role: 'Captain & Player of the Year' },
+      { team: 'Free State Grant Khomo', role: 'Captain' },
+      { team: 'Free State U17 IPT 7s', role: 'Player' },
+      { team: 'World Schools Tournament', role: 'Thailand Representative' }
+    ]
+  },
+  {
+    year: '2023',
+    honours: [
+      { team: 'Grey College 2nd & 1st Teams', role: 'Player' },
+      { team: 'Free State U17 IPT 7s', role: 'Captain' },
+      { team: 'Rhino Week', role: 'Captain' }
+    ]
+  },
+  {
+    year: '2024',
+    honours: [
+      { team: 'Grey College First Team', role: 'Player' }
+    ]
+  },
+  {
+    year: '2024–2025',
+    honours: [
+      { team: 'Lions Rugby U19/U21 Squad', role: 'Member' }
+    ]
+  },
+  {
+    year: '2025',
+    honours: [
+      { team: 'Wits Young Guns', role: 'Captain & Champions' },
+      { team: 'Portugal Senior Sevens', role: 'HSBC Series Winner' }
+    ]
   }
 ]
 
@@ -148,6 +240,7 @@ const values = [
 export function RugbyTimeline() {
   const [selectedEvent, setSelectedEvent] = useState<number | null>(null)
   const [currentAchievement, setCurrentAchievement] = useState(0)
+  const [selectedYear, setSelectedYear] = useState<string | null>(null)
 
   const nextAchievement = () => {
     setCurrentAchievement((prev) => (prev + 1) % achievements.length)
@@ -176,10 +269,10 @@ export function RugbyTimeline() {
         >
           <div className="status-elite mb-6">Championship Timeline</div>
           <h2 className="text-responsive-lg gradient-text mb-6">
-            Elite Rugby Journey
+            Representative Honours & Leadership
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Six years of elite rugby progression from U13 provincial captain to international champion, with consistent leadership and championship victories
+            Comprehensive timeline of rugby achievements, captaincies, and representative honours from U13 provincial level to international championship success
           </p>
           <div className="flex items-center justify-center mt-8">
             <div className="h-1 w-24 bg-gradient-to-r from-primary via-accent to-primary rounded-full" />
@@ -286,6 +379,74 @@ export function RugbyTimeline() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </motion.div>
+
+        {/* Representative Honours Grid */}
+        <motion.div
+          className="mb-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h3 className="text-responsive-md text-center mb-12 text-elite">Representative Honours</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {representativeHonours.map((yearData, index) => (
+              <motion.div
+                key={yearData.year}
+                className="card-elite p-6 hover-lift cursor-pointer group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onClick={() => setSelectedYear(selectedYear === yearData.year ? null : yearData.year)}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-center mb-4">
+                  <div className="text-2xl font-bold gradient-text mb-2">{yearData.year}</div>
+                  <div className="text-sm text-muted-foreground">Representative Honours</div>
+                </div>
+                
+                <div className="space-y-3">
+                  {yearData.honours.slice(0, 2).map((honour, i) => (
+                    <div key={i} className="text-sm">
+                      <div className="font-semibold text-primary">{honour.team}</div>
+                      <div className="text-muted-foreground">{honour.role}</div>
+                    </div>
+                  ))}
+                  
+                  {yearData.honours.length > 2 && (
+                    <div className="text-xs text-muted-foreground">
+                      +{yearData.honours.length - 2} more honours
+                    </div>
+                  )}
+                </div>
+
+                {/* Expandable Details */}
+                <AnimatePresence>
+                  {selectedYear === yearData.year && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 pt-4 border-t border-border/30"
+                    >
+                      <div className="space-y-2">
+                        {yearData.honours.map((honour, i) => (
+                          <div key={i} className="text-xs">
+                            <div className="font-semibold text-primary">{honour.team}</div>
+                            <div className="text-muted-foreground">{honour.role}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 

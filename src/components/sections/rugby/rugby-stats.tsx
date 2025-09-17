@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Target, Users, Calendar, TrendingUp, Award, Star, BarChart3, Activity, Flag } from 'lucide-react'
+import { Trophy, Target, Users, Calendar, TrendingUp, Award, Star, BarChart3, Activity, Flag, MapPin, Crown, Zap } from 'lucide-react'
 
 const statCategories = [
   { id: 'career', label: 'Career Overview', icon: Trophy },
-  { id: 'performance', label: 'Performance', icon: TrendingUp },
   { id: 'leadership', label: 'Leadership', icon: Users },
-  { id: 'achievements', label: 'Achievements', icon: Award }
+  { id: 'achievements', label: 'Achievements', icon: Award },
+  { id: 'positions', label: 'Positions', icon: Target }
 ]
 
 const rugbyStats = {
@@ -21,7 +21,7 @@ const rugbyStats = {
       icon: Calendar
     },
     { 
-      label: 'Positions', 
+      label: 'Primary Position', 
       value: '#6', 
       description: 'Loose Forward specialization',
       trend: 'Primary position mastery',
@@ -29,7 +29,7 @@ const rugbyStats = {
     },
     { 
       label: 'Teams Represented', 
-      value: '8+', 
+      value: '12+', 
       description: 'From school to international',
       trend: 'Consistent progression',
       icon: Flag
@@ -40,36 +40,6 @@ const rugbyStats = {
       description: 'International & Provincial',
       trend: 'Peak performance level',
       icon: Star
-    }
-  ],
-  performance: [
-    { 
-      label: 'Match Win Rate', 
-      value: '78%', 
-      description: 'Across all competitions',
-      trend: '+12% improvement in 2024',
-      icon: TrendingUp
-    },
-    { 
-      label: 'Leadership Success', 
-      value: '85%', 
-      description: 'Win rate as captain',
-      trend: 'Consistent championship results',
-      icon: BarChart3
-    },
-    { 
-      label: 'Tournament Success', 
-      value: '92%', 
-      description: 'Major tournament completion',
-      trend: 'Elite tournament performer',
-      icon: Activity
-    },
-    { 
-      label: 'Development Rate', 
-      value: '95%', 
-      description: 'Skills progression annually',
-      trend: 'Rapid elite development',
-      icon: Target
     }
   ],
   leadership: [
@@ -95,11 +65,11 @@ const rugbyStats = {
       icon: Star
     },
     { 
-      label: 'Mentorship Impact', 
-      value: '25+', 
-      description: 'Players mentored & developed',
-      trend: 'Leadership by example',
-      icon: Users
+      label: 'Leadership Awards', 
+      value: '4', 
+      description: 'Player of Year & Captain awards',
+      trend: 'Recognition at every level',
+      icon: Crown
     }
   ],
   achievements: [
@@ -125,11 +95,41 @@ const rugbyStats = {
       icon: Star
     },
     { 
-      label: 'Individual Awards', 
+      label: 'School Achievements', 
+      value: '6+', 
+      description: 'Grey College excellence',
+      trend: 'Consistent school success',
+      icon: Zap
+    }
+  ],
+  positions: [
+    { 
+      label: 'Primary Position', 
+      value: 'Loose Forward', 
+      description: 'Position #6 specialization',
+      trend: 'Elite level mastery',
+      icon: Target
+    },
+    { 
+      label: 'Secondary Positions', 
       value: '3', 
-      description: 'Player of Year & Captain awards',
-      trend: 'Individual excellence recognition',
-      icon: Award
+      description: 'Number 8, Inside Centre, Wing',
+      trend: 'Versatile player',
+      icon: Users
+    },
+    { 
+      label: 'Position Flexibility', 
+      value: 'High', 
+      description: 'Multiple position capability',
+      trend: 'Adaptable player',
+      icon: Activity
+    },
+    { 
+      label: 'Position Success Rate', 
+      value: '95%', 
+      description: 'Performance across positions',
+      trend: 'Consistent excellence',
+      icon: BarChart3
     }
   ]
 }
@@ -143,11 +143,18 @@ const milestones = [
     metric: 'Captaincy'
   },
   {
-    year: '2022',
+    year: '2021',
     title: 'School Excellence',
     description: 'Player of the Year at Grey College',
     value: 'Top',
     metric: 'Player'
+  },
+  {
+    year: '2022',
+    title: 'Dual Captaincy',
+    description: 'School and provincial captain',
+    value: '2x',
+    metric: 'Captain'
   },
   {
     year: '2024',
@@ -166,10 +173,10 @@ const milestones = [
 ]
 
 const progressionData = [
-  { level: 'U13 Provincial', year: '2019', progress: 15 },
-  { level: 'School Elite', year: '2020-2023', progress: 45 },
-  { level: 'Provincial Elite', year: '2024', progress: 75 },
-  { level: 'International', year: '2025', progress: 100 }
+  { level: 'U13 Provincial', year: '2019', progress: 15, details: 'Limpopo Blue Bulls Captain' },
+  { level: 'School Elite', year: '2020-2023', progress: 45, details: 'Grey College Excellence' },
+  { level: 'Provincial Elite', year: '2024', progress: 75, details: 'Lions U19/U21 Squad' },
+  { level: 'International', year: '2025', progress: 100, details: 'Portugal Senior Sevens' }
 ]
 
 export function RugbyStats() {
@@ -179,14 +186,15 @@ export function RugbyStats() {
   const currentStats = rugbyStats[selectedCategory as keyof typeof rugbyStats]
 
   return (
-    <section id="rugby-stats" className="section-padding bg-gradient-to-br from-background via-background/95 to-primary/5 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-gradient-to-r from-primary/3 to-accent/3 blur-3xl floating" />
-        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 rounded-full bg-gradient-to-r from-accent/4 to-primary/4 blur-2xl" style={{ animationDelay: '2s' }} />
+    <section id="rugby-stats" className="section-padding relative overflow-hidden">
+      {/* Championship Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 blur-3xl animate-championship" />
+        <div className="absolute top-3/4 right-1/4 w-24 h-24 rounded-full bg-gradient-to-r from-primary/15 to-secondary/15 blur-2xl floating" />
+        <div className="absolute top-1/2 left-1/2 w-40 h-40 rounded-full bg-gradient-to-r from-accent/5 to-primary/5 blur-3xl" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="container-elite relative">
+      <div className="container-elite relative z-10">
         {/* Section Header */}
         <motion.div
           className="text-center mb-20"
@@ -195,7 +203,7 @@ export function RugbyStats() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="status-elite mb-6">Performance Analytics</div>
+          <div className="status-champion mb-6">Performance Analytics</div>
           <h2 className="text-responsive-lg gradient-text mb-6">
             Elite Rugby Statistics
           </h2>
@@ -244,7 +252,7 @@ export function RugbyStats() {
             {currentStats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="card-elite p-6 hover-lift group cursor-pointer relative overflow-hidden"
+                className="glass p-6 hover-lift group cursor-pointer relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -329,6 +337,7 @@ export function RugbyStats() {
                       <span className="text-sm font-bold text-primary">{item.progress}%</span>
                     </div>
                   </div>
+                  <div className="text-xs text-muted-foreground mb-2">{item.details}</div>
                   <div className="h-3 bg-muted rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
@@ -354,7 +363,7 @@ export function RugbyStats() {
         >
           <h3 className="text-responsive-md text-center mb-12 text-elite">Career Milestones</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {milestones.map((milestone, index) => (
               <motion.div
                 key={index}
@@ -364,7 +373,7 @@ export function RugbyStats() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="card-elite p-6 hover-lift">
+                <div className="glass p-6 hover-lift">
                   <div className="mb-4">
                     <div className="text-3xl font-black gradient-text mb-1">{milestone.value}</div>
                     <div className="text-xs text-muted-foreground uppercase tracking-wider">{milestone.metric}</div>
@@ -408,8 +417,8 @@ export function RugbyStats() {
                 <div className="text-sm text-muted-foreground">Captaincies</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black gradient-text mb-2">85%</div>
-                <div className="text-sm text-muted-foreground">Win Rate</div>
+                <div className="text-3xl font-black gradient-text mb-2">12+</div>
+                <div className="text-sm text-muted-foreground">Teams</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-black gradient-text mb-2">1</div>
