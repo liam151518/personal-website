@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaYoutube, FaXTwitter, FaSpotify, FaReact } from 'react-icons/fa6'
+import { FaXTwitter, FaSpotify, FaGithub } from 'react-icons/fa6'
 import FancyButton from '@/components/ui/shiny-button'
 
 export function Footer() {
@@ -24,12 +24,12 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center"
           >
-            <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
+            <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
               <FancyButton 
-                icon={<FaReact size={28} />} 
+                icon={<FaGithub size={28} />} 
                 variant="default" 
-                ariaLabel="React Portfolio"
-                onClick={() => window.open('https://react.dev', '_blank')}
+                ariaLabel="GitHub Profile"
+                onClick={() => window.open('https://github.com/liam151518', '_blank')}
               />
               <FancyButton 
                 icon={<FaSpotify size={28} className="text-green-500" />} 
@@ -42,12 +42,6 @@ export function Footer() {
                 variant="indigo" 
                 ariaLabel="X (Twitter) Profile"
                 onClick={() => window.open('https://x.com/santos_liam_?s=21', '_blank')}
-              />
-              <FancyButton 
-                icon={<FaYoutube size={28} className="text-red-500" />} 
-                variant="red" 
-                ariaLabel="YouTube Channel"
-                onClick={() => window.open('https://youtube.com', '_blank')}
               />
             </div>
           </motion.div>

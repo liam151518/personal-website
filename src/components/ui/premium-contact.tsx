@@ -105,10 +105,40 @@ export function PremiumContact() {
     if (!validateForm()) return;
     
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    
+    try {
+      // Create email content
+      const subject = `New message from ${formData.name} - Personal Website`;
+      const body = `Hi Liam,
+
+You have received a new message from your personal website:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || 'Not specified'}
+
+Message:
+${formData.message}
+
+---
+This message was sent from your personal website contact form.`;
+
+      // Create mailto link
+      const mailtoLink = `mailto:liamxandersantos@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
+      
+      // Show success message
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', company: '', message: '' }); // Reset form
+      
+    } catch (error) {
+      console.error('Failed to open email client:', error);
+      setErrors({ submit: 'Failed to open email client. Please email me directly at liamxandersantos@gmail.com' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fadeInUp = {
@@ -276,6 +306,17 @@ export function PremiumContact() {
                     )}
                   </div>
 
+                  {/* Error message for submission */}
+                  {errors.submit && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800"
+                    >
+                      {errors.submit}
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
@@ -321,9 +362,9 @@ export function PremiumContact() {
                   >
                     <CheckCircle className="w-10 h-10 text-primary" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Email Client Opened!</h3>
                   <p className="text-muted-foreground text-lg mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
+                    Your email client should have opened with a pre-filled message. Please send the email to complete your message. If it didn't open, you can email me directly at liamxandersantos@gmail.com
                   </p>
                   <motion.button
                     onClick={() => {

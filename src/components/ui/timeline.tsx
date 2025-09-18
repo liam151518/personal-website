@@ -46,11 +46,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           transition={{ duration: 0.8 }}
         >
           <span className="bg-gradient-to-r from-primary via-orange-500 to-yellow-500 bg-clip-text text-transparent">
-            From Provincial Captain
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-yellow-500 via-orange-500 to-primary bg-clip-text text-transparent">
-            to International Champion
+            Timeline View
           </span>
         </motion.h2>
         <motion.p 
@@ -60,7 +56,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          A journey of consistent leadership, championship victories, and elite-level progression from U13 Craven Week to international rugby success
+          A journey of a student athlete balancing academic excellence with athletic achievement, striving to become a serial entrepreneur
         </motion.p>
         <motion.div 
           className="flex items-center justify-center mt-8"

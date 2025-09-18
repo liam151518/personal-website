@@ -174,7 +174,7 @@ export function Hero() {
               <Mail size={24} className="group-hover:text-primary transition-colors" />
             </motion.a>
             <motion.a
-              href="https://github.com/liamsantos"
+              href="https://github.com/liam151518"
               target="_blank"
               rel="noopener noreferrer"
               className="glass p-4 rounded-xl magnetic group"
