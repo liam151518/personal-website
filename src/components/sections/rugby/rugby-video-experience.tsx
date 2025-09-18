@@ -24,7 +24,7 @@ interface MediaContentCollection {
 
 const rugbyMediaContent: MediaContentCollection = {
   video: {
-    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    src: '/video/rugby-highlights.mp4',
     poster: '/photos/portugal-sevens-victory.jpg',
     background: '/photos/portugal-sevens-victory.jpg',
     title: 'Rugby Highlights',
