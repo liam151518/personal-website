@@ -24,7 +24,7 @@ interface MediaContentCollection {
 
 const rugbyMediaContent: MediaContentCollection = {
   video: {
-    src: '/videos/ rugby-highlights.mov',
+    src: '/video/rugby-highlights.mp4',
     poster: '/photos/portugal-sevens-victory.jpg',
     background: '/photos/portugal-sevens-victory.jpg',
     title: 'Rugby Highlights',
