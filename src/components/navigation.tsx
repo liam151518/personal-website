@@ -46,7 +46,7 @@ export function Navigation() {
 
       {/* Logo - Top Left */}
       <motion.div
-        className="fixed top-6 left-6 z-50"
+        className="fixed top-3 left-3 sm:top-6 sm:left-6 z-50"
         initial={{ opacity: 0, x: -20, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ 
@@ -56,7 +56,7 @@ export function Navigation() {
         }}
       >
         <motion.div
-          className="text-xl font-bold gradient-text cursor-pointer uppercase tracking-widest bg-background/10 border border-white/20 backdrop-blur-xl px-5 py-3 rounded-2xl shadow-2xl shadow-black/10"
+          className="text-lg sm:text-xl font-bold gradient-text cursor-pointer uppercase tracking-widest bg-background/10 border border-white/20 backdrop-blur-xl px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/10 touch-manipulation"
           whileHover={{ 
             scale: 1.05, 
             rotate: 1,

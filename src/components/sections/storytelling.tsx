@@ -32,7 +32,7 @@ const values = [
 
 export function StorytellingSection() {
   return (
-    <section id="story" className="section-padding relative overflow-hidden py-32">
+    <section id="story" className="section-padding relative overflow-hidden py-16 sm:py-32">
       <div className="container-elite relative">
         {/* Rugby Timeline */}
         <div className="mb-24">

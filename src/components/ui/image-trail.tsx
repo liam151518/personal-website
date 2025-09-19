@@ -1,6 +1,6 @@
 'use client'
 
-import { Children, useCallback, useEffect, useMemo, useRef } from "react"
+import { Children, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   AnimationSequence,
   motion,
@@ -48,6 +48,17 @@ const ImageTrail = ({
   ],
   interval = 100,
 }: ImageTrailProps) => {
+  // Detect mobile device for performance optimization
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   const trailRef = useRef<TrailItem[]>([])
 
   const lastAddedTimeRef = useRef<number>(0)
@@ -102,8 +113,10 @@ const ImageTrail = ({
     lastMousePosRef.current = mousePosition
 
     const currentTime = time
+    // Use longer interval on mobile for better performance
+    const mobileInterval = isMobile ? interval * 1.5 : interval
 
-    if (currentTime - lastAddedTimeRef.current < interval) {
+    if (currentTime - lastAddedTimeRef.current < mobileInterval) {
       return
     }
 

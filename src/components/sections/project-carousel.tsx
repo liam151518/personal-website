@@ -227,7 +227,7 @@ export function ProjectCarousel() {
   }, []);
 
   return (
-    <section id="projects" className="section-padding relative overflow-hidden py-32">
+    <section id="projects" className="section-padding relative overflow-hidden py-16 sm:py-32">
       <div className="container-elite relative">
         {/* Section Header */}
         <motion.div
@@ -253,7 +253,7 @@ export function ProjectCarousel() {
 
         {/* Radial Orbital Timeline with Navigation */}
         <motion.div
-          className="relative h-[900px] flex items-center justify-center"
+          className="relative h-[500px] sm:h-[900px] flex items-center justify-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, margin: "-100px" }}
@@ -262,17 +262,17 @@ export function ProjectCarousel() {
           {/* Left Arrow */}
           <button
             onClick={prevProject}
-            className="absolute left-8 z-30 glass p-4 rounded-full hover-lift magnetic focus-elite shadow-championship"
+            className="absolute left-2 sm:left-8 z-30 glass p-2 sm:p-4 rounded-full hover-lift magnetic focus-elite shadow-championship touch-manipulation"
           >
-            <ChevronLeft className="w-8 h-8 text-primary" />
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={nextProject}
-            className="absolute right-8 z-30 glass p-4 rounded-full hover-lift magnetic focus-elite shadow-championship"
+            className="absolute right-2 sm:right-8 z-30 glass p-2 sm:p-4 rounded-full hover-lift magnetic focus-elite shadow-championship touch-manipulation"
           >
-            <ChevronRight className="w-8 h-8 text-primary" />
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           </button>
 
 

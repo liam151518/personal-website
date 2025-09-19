@@ -521,6 +521,8 @@
     --text-display: 2.5rem;
     --text-h1: 2rem;
     --text-h2: 1.75rem;
+    --text-h3: 1.5rem;
+    --text-h4: 1.25rem;
   }
 
   .section-padding {
@@ -535,12 +537,77 @@
   .brutalist-card:hover {
     box-shadow: 2px 2px 0px 0px hsl(var(--primary) / 0.6);
   }
+
+  /* Mobile-specific typography adjustments */
+  .text-responsive-xl {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+  }
+
+  .text-responsive-xl-enhanced {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1.25rem, 5vw, 2.5rem);
+  }
+
+  .text-responsive-md {
+    font-size: clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Mobile navigation spacing */
+  .container-elite {
+    @apply max-w-full px-4;
+  }
+
+  /* Mobile card adjustments */
+  .card-elite {
+    @apply p-4;
+  }
+
+  /* Mobile button adjustments */
+  .btn-primary {
+    @apply px-6 py-3 text-sm;
+  }
 }
 
 @media (max-width: 480px) {
   .grid-elite {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .floating {
+    animation-duration: 8s; /* Slower animations on mobile */
+  }
+
+  .animate-championship {
+    animation-duration: 3s;
+  }
+
+  .animate-elite-slide {
+    animation-duration: 0.6s;
+  }
+
+  /* Optimize particle effects */
+  .particle-container {
+    transform: translateZ(0); /* Force hardware acceleration */
+    will-change: transform;
+  }
+
+  /* Reduce blur effects on mobile for performance */
+  .glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-strong {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
 }
 

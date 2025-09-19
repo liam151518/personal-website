@@ -166,23 +166,23 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        "fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-3 sm:pt-6",
         className,
       )}
     >
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ opacity: 0, y: isMobile ? 20 : -20, scale: 0.95 }}
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: isMobile ? 20 : -20, scale: 0.95 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ 
               duration: 0.4, 
               ease: [0.16, 1, 0.3, 1],
               scale: { duration: 0.3 }
             }}
           >
-            <div className="flex items-center gap-1 bg-background/10 border border-white/20 backdrop-blur-xl py-2 px-2 rounded-2xl shadow-2xl shadow-black/10">
+            <div className="flex items-center gap-1 sm:gap-1 bg-background/10 border border-white/20 backdrop-blur-xl py-1.5 px-1.5 sm:py-2 sm:px-2 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/10">
               {items.map((item) => {
                 const Icon = item.icon
                 const isActive = activeTab === item.name
@@ -192,14 +192,14 @@ export function NavBar({ items, className }: NavBarProps) {
                     key={item.name}
                     onClick={() => handleNavClick(item)}
                     className={cn(
-                      "relative cursor-pointer text-sm font-medium px-5 py-2.5 rounded-xl transition-all duration-300",
-                      "text-foreground/70 hover:text-foreground hover:scale-105",
+                      "relative cursor-pointer text-xs sm:text-sm font-medium px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl transition-all duration-300 touch-manipulation",
+                      "text-foreground/70 hover:text-foreground hover:scale-105 active:scale-95",
                       isActive && "text-foreground font-semibold",
                     )}
                   >
-                    <span className="hidden md:inline">{item.name}</span>
-                    <span className="md:hidden">
-                      <Icon size={18} strokeWidth={2.5} />
+                    <span className="hidden sm:inline">{item.name}</span>
+                    <span className="sm:hidden">
+                      <Icon size={16} strokeWidth={2.5} />
                     </span>
                     {isActive && (
                       <motion.div

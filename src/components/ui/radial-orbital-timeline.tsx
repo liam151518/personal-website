@@ -121,7 +121,8 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 320; // Increased from 240 to 320 (33% bigger)
+    // Responsive radius for mobile devices - check if window exists for SSR compatibility
+    const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 200 : 320;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -175,16 +176,16 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-28 h-28 rounded-full bg-gradient-to-br from-primary via-accent to-primary animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-32 h-32 rounded-full border border-primary/30 animate-ping opacity-70"></div>
+          <div className="absolute w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-primary via-accent to-primary animate-pulse flex items-center justify-center z-10">
+            <div className="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-primary/30 animate-ping opacity-70"></div>
             <div
-              className="absolute w-36 h-36 rounded-full border border-primary/20 animate-ping opacity-50"
+              className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-primary/20 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <div className="w-14 h-14 rounded-full bg-primary/80 backdrop-blur-md"></div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary/80 backdrop-blur-md"></div>
           </div>
 
-          <div className="absolute w-[640px] h-[640px] rounded-full border border-primary/20"></div>
+          <div className="absolute w-[400px] h-[400px] sm:w-[640px] sm:h-[640px] rounded-full border border-primary/20"></div>
           
           {/* Center Project Info */}
           {centerContent && (
@@ -238,7 +239,7 @@ export default function RadialOrbitalTimeline({
 
                 <div
                   className={`
-                  w-16 h-16 rounded-full flex items-center justify-center
+                  w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center
                   ${
                     isExpanded
                       ? "bg-primary text-white"
@@ -254,17 +255,17 @@ export default function RadialOrbitalTimeline({
                       ? "border-primary animate-pulse"
                       : "border-primary/40"
                   }
-                  transition-all duration-300 transform
+                  transition-all duration-300 transform touch-manipulation
                   ${isExpanded ? "scale-150" : ""}
                 `}
                 >
-                  <Icon size={24} />
+                  <Icon size={typeof window !== 'undefined' && window.innerWidth < 768 ? 18 : 24} />
                 </div>
 
                 <div
                   className={`
-                  absolute top-18  whitespace-nowrap
-                  text-base font-semibold tracking-wider
+                  absolute top-14 sm:top-18 whitespace-nowrap
+                  text-sm sm:text-base font-semibold tracking-wider
                   transition-all duration-300
                   ${isExpanded ? "text-primary scale-125" : "text-muted-foreground"}
                 `}
@@ -273,7 +274,7 @@ export default function RadialOrbitalTimeline({
                 </div>
 
                 {isExpanded && (
-                  <Card className="absolute top-28 left-1/2 -translate-x-1/2 w-96 glass-strong border-primary/30 shadow-xl shadow-primary/10 overflow-visible">
+                  <Card className="absolute top-20 sm:top-28 left-1/2 -translate-x-1/2 w-80 sm:w-96 glass-strong border-primary/30 shadow-xl shadow-primary/10 overflow-visible">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-primary/50"></div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-center">

@@ -6,6 +6,7 @@ import { AnimationProvider } from '@/components/animation-provider'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { ParticleBackground } from '@/components/animations/particle-background'
 import { LoadingSequence } from '@/components/animations/loading-sequence'
+import { MobileDisclaimer } from '@/components/ui/mobile-disclaimer'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -110,6 +111,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             
             {/* Custom cursor for interactive experience */}
             <CustomCursor />
+            
+            {/* Mobile disclaimer popup */}
+            <MobileDisclaimer />
             
             {/* Main content */}
             <main className="relative z-10">

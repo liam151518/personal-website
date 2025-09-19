@@ -26,17 +26,17 @@ export const ImageTrailHero = () => {
   ]
 
   return (
-    <div className="w-full h-screen relative overflow-hidden flex items-center justify-center px-2 md:px-10 py-4">
+    <div className="w-full h-screen relative overflow-hidden flex items-center justify-center px-2 md:px-10 py-4 pt-20 sm:pt-4">
       <div className="absolute inset-0 z-0" ref={ref}>
         <ImageTrail 
           containerRef={ref}
-          interval={150} // Increased interval for smoother performance
-          rotationRange={10} // Reduced rotation for less CPU usage
+          interval={200} // Increased interval for mobile performance
+          rotationRange={8} // Further reduced rotation for mobile
         >
           {images.map((url, index) => (
             <div
               key={index}
-              className="flex relative overflow-hidden w-20 h-20 rounded-xl shadow-elite" // Slightly smaller size
+              className="flex relative overflow-hidden w-16 h-16 sm:w-20 sm:h-20 rounded-lg sm:rounded-xl shadow-elite" // Smaller size for mobile
             >
               <img
                 src={url}
@@ -49,7 +49,7 @@ export const ImageTrailHero = () => {
         </ImageTrail>
       </div>
 
-      <div className="text-center relative z-10">
+      <div className="text-center relative z-10 px-4">
         <h1 className="text-responsive-xl font-black gradient-text leading-tight tracking-tight z-10 select-none">
           Liam Xander Santos
         </h1>
